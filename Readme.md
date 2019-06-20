@@ -1,0 +1,1 @@
+This repository includes exercices from C++ books and other independent code experiments.
