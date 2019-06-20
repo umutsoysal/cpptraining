@@ -1,0 +1,27 @@
+#include <iostream>
+
+
+
+
+
+
+int main(){
+    int i=0, j[2]={0,1};
+
+std:cout<<"i: "<<std::endl;
+
+    return 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
