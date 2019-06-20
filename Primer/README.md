@@ -1,0 +1,1 @@
+Small applications and exercices for C++ training. The explanations are at the top of the file.

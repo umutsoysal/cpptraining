@@ -1,3 +1,7 @@
+// Adding constructor to the Sales_data class
+// Move the definition of the Sales_data constructor that takes an istream into the body of the Sales_data class.
+
+
 #include <string>
 #include <iostream>
 
@@ -5,11 +9,12 @@ struct Sales_data;
 std::istream &read(std::istream &is, Sales_data &item);
 
 struct Sales_data {
+    
   Sales_data() = default;
   Sales_data(const std::string &no) : bookNo(no) {}
   Sales_data(const std::string &no, unsigned us, double price)
       : bookNo(no), units_sold(us), revenue(price * us) {}
-  Sales_data::Sales_data(std::istream &is) {
+  Sales_data(std::istream &is) {
     read(is, *this);
   }
 

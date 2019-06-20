@@ -2,9 +2,8 @@
 // operations to return name and address
 
 #include <string>
-#include <iostream>
 
-struct Person{
+strunct Person{
 
     std::string name;
     std::string address;
@@ -14,14 +13,14 @@ struct Person{
 };
 
 std::istream &read(std::istream &is, Person &rhs){
-    is>>rhs.name>>rhs.address;
+    is<<rhs.name<<rhs.address;
     return is;
 }
 
 std::ostream &print(std::ostream &os, const Person &rhs){
     os<<rhs.getName()<<" " <<rhs.getAddress();
-    return os;
 }
+
 
 
 

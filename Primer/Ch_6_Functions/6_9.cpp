@@ -1,0 +1,12 @@
+#include "chapter6.h"
+
+int fact(int n){
+
+
+
+    if (n<1) return n;
+    int k=n;
+    while(--n)
+        k *=n;
+    return k;
+}

@@ -1,22 +1,27 @@
-// Adding constructor to the Sales_data class
-
 #include <string>
 #include <iostream>
 
-struct Sales_data {   // Define the class
+class Sales_data;
+std::istream &read(std::istream &, Sales_data &);
 
-    // Constructors are added
-  Sales_data() = default;  //default
-    // Different ways to define a class
+class Sales_data {
+  friend Sales_data add(const Sales_data &, const Sales_data &);
+  friend std::istream &read(std::istream &, Sales_data &);
+  friend std::ostream &print(std::ostream &, const Sales_data &);
+
+public:
+  Sales_data() : bookNo(""), units_sold(0), revenue(0.0) {}
   Sales_data(const std::string &no) : bookNo(no) {}
   Sales_data(const std::string &no, unsigned us, double price)
       : bookNo(no), units_sold(us), revenue(price * us) {}
-  Sales_data(std::istream &is);
+  Sales_data::Sales_data(std::istream &is) {
+    read(is, *this);
+  }
 
-    
   std::string isbn() const { return bookNo; }
   Sales_data &combine(const Sales_data &);
 
+private:
   std::string bookNo;
   unsigned units_sold = 0;
   double revenue = 0.0;
@@ -46,10 +51,6 @@ std::ostream &print(std::ostream &os, const Sales_data &item) {
   return os;
 }
 
-Sales_data::Sales_data(std::istream &is) { // Another constructor defined outside of the body
-  read(is, *this);
-}
-
 int main() {
   Sales_data d1;
   Sales_data d2("0-201-78345-X");
@@ -60,6 +61,24 @@ int main() {
   print(std::cout, d2) << std::endl;
   print(std::cout, d3) << std::endl;
   print(std::cout, d4) << std::endl;
+
+  Sales_data total(std::cin);
+  if (std::cin) {
+    Sales_data trans(std::cin);
+    while (std::cin) {
+      if (total.isbn() == trans.isbn()) {
+        total.combine(trans);
+      } else {
+        print(std::cout, total) << std::endl;
+        total = trans;  // Use default copy constructor
+      }
+      read(std::cin, trans);
+    }
+    print(std::cout, total) << std::endl;
+  } else {
+    std::cerr << "No data!" << std::endl;
+    return -1;
+  }
 
   return 0;
 }

@@ -1,19 +1,20 @@
-// Adding constructor to the Sales_data class
+// Rewriting of the transaction program using constructors
 
 #include <string>
 #include <iostream>
 
-struct Sales_data {   // Define the class
+struct Sales_data;
+std::istream &read(std::istream &is, Sales_data &item);
 
-    // Constructors are added
-  Sales_data() = default;  //default
-    // Different ways to define a class
+struct Sales_data {
+  Sales_data() = default;
   Sales_data(const std::string &no) : bookNo(no) {}
   Sales_data(const std::string &no, unsigned us, double price)
       : bookNo(no), units_sold(us), revenue(price * us) {}
-  Sales_data(std::istream &is);
+  Sales_data(std::istream &is) {
+    read(is, *this);
+  }
 
-    
   std::string isbn() const { return bookNo; }
   Sales_data &combine(const Sales_data &);
 
@@ -46,20 +47,26 @@ std::ostream &print(std::ostream &os, const Sales_data &item) {
   return os;
 }
 
-Sales_data::Sales_data(std::istream &is) { // Another constructor defined outside of the body
-  read(is, *this);
-}
-
 int main() {
-  Sales_data d1;
-  Sales_data d2("0-201-78345-X");
-  Sales_data d3("0-201-78345-X", 5, 2.5);
-  Sales_data d4(std::cin);
-
-  print(std::cout, d1) << std::endl;
-  print(std::cout, d2) << std::endl;
-  print(std::cout, d3) << std::endl;
-  print(std::cout, d4) << std::endl;
+  Sales_data total(std::cin);
+  //if (read(std::cin, total)) {
+  if (std::cin) {
+    Sales_data trans(std::cin);
+    //while (read(std::cin, trans)) {
+    while (std::cin) {
+      if (total.isbn() == trans.isbn()) {
+        total.combine(trans);
+      } else {
+        print(std::cout, total) << std::endl;
+        total = trans;  // Use default copy constructor
+      }
+      read(std::cin, trans);  // Read new transaction
+    }
+    print(std::cout, total) << std::endl;
+  } else {
+    std::cerr << "No data!" << std::endl;
+    return -1;
+  }
 
   return 0;
 }

@@ -1,8 +1,3 @@
-
-// Add the move, set and display operations to your version of Screen
-
-
-
 #include <string>
 #include <iostream>
 
@@ -22,13 +17,13 @@ public:
   const content_type &get(pos row, pos col) const;
   //content_type &get(pos row, pos col);
 
-  Screen &set(content_type c);
-  Screen &set(pos row, pos col, content_type c);
+  Screen set(content_type c);
+  Screen set(pos row, pos col, content_type c);
 
-  Screen &move(pos row, pos col);
+  Screen move(pos row, pos col);
 
-  const Screen &display(std::ostream &os) const;
-  Screen &display(std::ostream &os);
+  const Screen display(std::ostream &os) const;
+  Screen display(std::ostream &os);
 
 private:
   void do_display(std::ostream &os) const;
@@ -50,31 +45,31 @@ const Screen::content_type &Screen::get(pos row, pos col) const {
 //}
 
 inline
-Screen &Screen::set(content_type c) {
+Screen Screen::set(content_type c) {
   contents[cursor] = c;
   return *this;
 }
 
 inline
-Screen &Screen::set(pos row, pos col, content_type c) {
+Screen Screen::set(pos row, pos col, content_type c) {
   contents[row * width + col] = c;
   return *this;
 }
 
 inline
-Screen &Screen::move(pos row, pos col) {
+Screen Screen::move(pos row, pos col) {
   cursor = row * width + col;
   return *this;
 }
 
 inline
-const Screen &Screen::display(std::ostream &os) const {
+const Screen Screen::display(std::ostream &os) const {
   do_display(os);
   return *this;
 }
 
 inline
-Screen &Screen::display(std::ostream &os) {
+Screen Screen::display(std::ostream &os) {
   do_display(os);
   return *this;
 }
@@ -94,13 +89,6 @@ int main() {
   myScreen.move(4,0).set('#').display(std::cout);
   std::cout << "\n-----\n";
   myScreen.display(std::cout);
-  std::cout << "\n-----\n";
-
-  Screen myScreen2(5,3);
-  const Screen blank(5, 3);
-  myScreen2.set('#').display(std::cout);  // calls nonconst version
-  std::cout << "\n-----\n";
-  blank.display(std::cout);  // calls const version
   std::cout << "\n-----\n";
 
   return 0;

@@ -4,8 +4,15 @@
 #include <string>
 #include <iostream>
 
-struct Person{
+class Person{
+  public:
+    Person()=default; // Default constructor
+    Person( const std::string &n) : name(n){}
+    Person (const std::string &n, const std::string &a) : name(n), address(a) {}
+    Person(std::istream &is );
+           
 
+    
     std::string name;
     std::string address;
 
@@ -23,15 +30,24 @@ std::ostream &print(std::ostream &os, const Person &rhs){
     return os;
 }
 
-
+Person::Person(std::istream &is){
+    read(is, *this);
+}
 
 // we add constant member functions because they do not change the object.
 
 int main(){
 
     Person p1; //Create an instrance
-    read(std::cin, p1); // read the data using std::cin, not very useful
-    print(std::cout,p1)<<std::endl; // print out the data
+    Person p2("Umut Soysal");
+    Person p3("Umut Soysal", "ArdenStreet");
+    Person p4(std::cin);
 
+    print(std::cout, p1) << std::endl;
+    print(std::cout, p2) << std::endl;
+    print(std::cout, p3) << std::endl;
+    print(std::cout, p4) << std::endl;
+
+    
     return 0;
 }
