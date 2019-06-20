@@ -1,0 +1,21 @@
+//This function swaps two integers
+
+#include <iostream>
+
+void swapint(int *a, int *b){
+
+    int temp=*a;
+    *a=*b;
+    *b=temp;
+    
+}
+
+int main(){
+
+    int a,b;  // two integer
+    std::cin>>a>>b; // insert inputs  to variables
+    swapint(&a,&b); // pass references
+    std::cout<<"Swapped values :" <<a<<" "<<b<<std::endl;
+    
+    return 0;
+}
