@@ -7,9 +7,16 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <sstream>
 
-bool hasValue(std::vector<int>::const_iterator begin;
-	)
+bool hasValue(std::vector<int>::const_iterator begin,
+              std::vector<int>::const_iterator end,
+              int k){
+    for (auto it=begin; it !=end; ++it)
+        if (k==*it)
+            return true;
+    return false;
+}
 
 
 
@@ -17,11 +24,12 @@ int main()
 {
 	std::string str; 
 	std::getline(std::cin,str);
+        std::istringstream iss(str);
 	std::vector<int> v;
 
 	int k;
 
-	while (iss>k)
+	while (iss>>k)
 		v.push_back(k);
 	std::cin>>k;
 	std::cout<<hasValue(v.cbegin(), v.cend(),k)<<std::endl;
