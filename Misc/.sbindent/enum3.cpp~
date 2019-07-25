@@ -1,0 +1,14 @@
+//enuemration practices
+#include <iostream>
+
+ enum AttackType{
+    None,
+    Melee,
+    Fire,
+    Ice,
+    Poison
+}
+    int main(){
+
+        return 0;
+    }

@@ -1,0 +1,9 @@
+#include <iostream>
+
+int main(){
+
+    std::cout<<"link error problem"<<std::endl;
+
+    return 0;
+
+}

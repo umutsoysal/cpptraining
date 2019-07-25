@@ -1,0 +1,4 @@
+
+#define SLF_UseFeature(fname) \
+    dummyFeature *dummyFEAT_##fName
+

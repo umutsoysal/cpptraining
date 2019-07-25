@@ -1,0 +1,22 @@
+
+// Determine if there are any errors in the following programs and, if so, correct the error(s)
+
+//a
+
+#include <iostream>
+#include <vector>
+#include <list>
+#include <string>
+
+int main(){
+
+    vector<int>vec;
+    list<int>lst;
+    int i;
+
+    while(cin>>i)
+        lst.push_back(i);
+    copy(lst.cbegin(),lst.cend(),vec.begin());
+
+    return 0;
+}
