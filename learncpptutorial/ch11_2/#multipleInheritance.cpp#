@@ -1,0 +1,41 @@
+#include <string>
+#include <iostream>
+
+
+
+class Person
+{
+  private:
+    std::string m_name;
+    int m_age;
+
+  public:
+    Person(std::string name,int age)
+        :m_name(name),m_age(age){}
+
+    std::string getName(){return m_name;}
+    int getAge(){return m_age;}
+
+};
+
+class Employee
+{
+  private:
+    std::string m_employer;
+    double m_wage;
+  public:
+    Employe(std::string employer, double wage)
+        :m_employer(employer),m_wage(wage){}
+
+    std::string getEmployer(){return m_employer;}
+    int getWage(){return m_wage;}
+
+};
+
+class Teacher
+{
+  private:
+    int m_teachersGrade;
+  public:
+    Teacher(
+};

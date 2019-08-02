@@ -21,3 +21,4 @@ int main(){
     cout<<"The string "<<value<<" has been occured " <<result2<<" times." <<endl;
     return 0;
 }
+

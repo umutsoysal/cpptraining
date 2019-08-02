@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+
+class Fruit{
+
+  private:
+    std::string m_name;
+    std::string m_color;
+  public:
+    Fruit(std::string name,std::string color)
+        :mname(name),m_color(color){}
+};
+
+
+
+int main()
+{
+    Apple a("red");
+    Banaba b;
+
+    std::cout<<"My"<<a.getName()<<" is "<<a.getColor()<<".\n";
+    std::cout<<"My"<<b.getName()<<" is "<<b.getColor()<<".\n";
+    
+
+    return 0;
+
+}

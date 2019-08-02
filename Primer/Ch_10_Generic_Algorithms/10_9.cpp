@@ -8,7 +8,10 @@
 #include<string>
 
 
+
 using namespace std;
+
+void funct(int a, int b);
 
 void elimDups(vector<string> &words)
 {

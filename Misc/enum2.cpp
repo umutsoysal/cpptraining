@@ -41,6 +41,5 @@ int main() {
     auto fl4 = fl3 | Options::FLAGS::F2;
     cout << fl4 << endl;
 
-    Options op1= OU;
 }
 

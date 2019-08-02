@@ -1,0 +1,27 @@
+#include <bitset>
+#include <iostream>
+
+
+using namespace std;
+
+
+int main(){
+
+    
+    bitset<8>bits1;
+
+
+
+    bits1.reset();
+    cout<<bits1<<endl;
+
+
+
+
+
+    
+    return 0;
+}
+
+
+
